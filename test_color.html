@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Mes couleurs</title>
+<script language="Javascript">
+    function update_page_Hex(value) {
+        update_page_color(value);
+        document.getElementById('RR').value = hexTOdec(value.substring(0,2));
+        document.getElementById('GG').value = hexTOdec(value.substring(2,4));
+        document.getElementById('BB').value = hexTOdec(value.substring(4.6));
+    }
+    
+    function hexTOdec(hex) {
+        return parseInt(hex, 16);
+    }
+    
+    function decTOhex(dec) {
+        decval = parseInt(dec).toString(16);
+        if (parseInt(dec) < 10) {
+            decval = "0" + decval;
+        }
+        return decval;
+    }
+    
+    function update_page_color(hexval) {
+        document.body.bgColor= hexval
+    }
+    
+    function update_page_Dec() {
+        red = document.getElementById('RR').value;
+        green = document.getElementById('GG').value;
+        blue = document.getElementById('BB').value;
+        hexval = decTOhex(red) + decTOhex(green) + decTOhex(blue);
+        update_page_color(hexval);
+        document.getElementById('RGB').value = hexval;
+    }
+</script>
+</head>
+<body bgcolor="#FFFFFF">
+    <form id="color_test" name="color_test">
+        <input id="RGB" type="text" onChange="javascript:update_page_Hex(this.value)" value="FFFFFF"/></input>
+        <br/>
+        <input id="RR" type="text" onChange="javascript:update_page_Dec()" value="255"/>
+        <input id="GG" type="text" onChange="javascript:update_page_Dec()" value="255"/>
+        <input id="BB" type="text" onChange="javascript:update_page_Dec()" value="255"/>
+    </form>
+</body>
+</html>
